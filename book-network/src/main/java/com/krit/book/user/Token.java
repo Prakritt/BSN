@@ -1,0 +1,30 @@
+package com.krit.book.user;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+public class Token {
+
+    @Id
+    @GeneratedValue
+    private Integer Id;
+
+    private String token;
+    private LocalDateTime createdAt;
+    private LocalDateTime expiresAt;
+    private LocalDateTime validatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
+
+}
